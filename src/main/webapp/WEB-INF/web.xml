@@ -1,0 +1,19 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+         version="3.1">
+
+    <display-name>LifeLens</display-name>
+
+    <servlet>
+        <servlet-name>GoogleOAuthServlet</servlet-name>
+        <servlet-class>GoogleOAuthServlet</servlet-class>  <!-- ✅ This line is required -->
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GoogleOAuthServlet</servlet-name>
+        <url-pattern>/GoogleOAuthServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to LifeLens</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background-color: #092249;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #22c55e;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #f8fafc;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #22c55e;
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 70px);
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            max-width: 600px;
+        }
+
+        .btn {
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #15803d;
+        }
+
+.review-wrapper {
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.review-wrapper h3 {
+    font-size: 1.5em;
+    color: #f1f5f9;
+    margin-bottom: 15px;
+}
+
+.review-track {
+    overflow: hidden;
+    width: 100%;
+    background-color: #1e293b;
+}
+
+.review-strip {
+    display: flex;
+    width: max-content;
+    animation: scrollLoop 30s linear infinite;
+}
+
+.review-card {
+    background-color: #334155;
+    color: #f1f5f9;
+    padding: 20px 20px;
+    border-radius: 10px;
+    min-width: 280px;
+    margin-right: 20px;
+    font-size: 1em;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Keyframe to scroll entire strip */
+@keyframes scrollLoop {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="logo">LifeLens 🩺</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lifestyle_form.jsp">Survey</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+    <h1>Welcome to LifeLens  🩺</h1>
+    <p>Your personalized gateway to understanding and improving your health. Take a quick lifestyle survey and discover AI-powered insights tailored just for you and free !!</p>
+
+    <a href="SelectSurvey.html">
+        <button class="btn">Click Here To Start
+        </button>
+    </a>
+
+    <!-- Testimonials Start -->
+   <div class="review-wrapper">
+    <h3>What People Are Saying</h3>
+    <div class="review-track">
+        <div class="review-strip">
+            <div class="review-card">🗣️ "LifeLens gave me real lifestyle tips. Highly recommended!" - Aisha</div>
+            <div class="review-card">💡 "Not just generic advice, it felt tailored to me!" - Rohan</div>
+            <div class="review-card">🏃 "The suggestions made me more active in daily life." - Priya</div>
+            <div class="review-card">🍎 "Loved how easy it was to use and understand." - Nikhil</div>
+            <div class="review-card">✅ "Simple, clean, and very helpful." - Meena</div>
+
+            <!-- DUPLICATE CARDS for smooth loop -->
+            <div class="review-card">🗣️ "LifeLens gave me real lifestyle tips. Highly recommended!" - Aisha</div>
+            <div class="review-card">💡 "Not just generic advice, it felt tailored to me!" - Rohan</div>
+            <div class="review-card">🏃 "The suggestions made me more active in daily life." - Priya</div>
+            <div class="review-card">🍎 "Loved how easy it was to use and understand." - Nikhil</div>
+            <div class="review-card">✅ "Simple, clean, and very helpful." - Meena</div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
