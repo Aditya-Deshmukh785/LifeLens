@@ -1,1 +1,15 @@
+# Ignore build output
 /build/
+*.class
+
+# Eclipse junk
+.settings/
+.classpath
+.project
+
+# Ignore secret config file
+src/main/webapp/WEB-INF/config.properties
+
+# OS junk files
+.DS_Store
+Thumbs.db
