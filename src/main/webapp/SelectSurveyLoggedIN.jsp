@@ -188,7 +188,7 @@
     <div class="survey-wrapper">
       <!-- Column 1 -->
       <div class="survey-column">
-        <a href="lifestyleSurvey.jsp" class="card-link">
+        <a href="LifestyleSurveyForm.jsp" class="card-link">
           <div class="card">
             <h2>Lifestyle Risk Assessment</h2>
             <p>Analyze your routine and find out your long-term health risk score.</p>
