@@ -113,8 +113,9 @@
     <nav>
         <div class="logo">LifeLens 🩺</div>
         <div class="profile">
-            <img src="<%= userPicture %>" alt="User Picture">
+           
             <span><%= userName %></span>
+             <img src="<%= userPicture %>" alt="User Picture">
         </div>
     </nav>
 
