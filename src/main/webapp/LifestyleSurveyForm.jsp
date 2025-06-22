@@ -113,8 +113,9 @@
     <nav>
         <div class="logo">LifeLens 🩺</div>
         <div class="profile">
-            <img src="<%= userPicture %>" alt="User Picture">
+           
             <span><%= userName %></span>
+             <img src="<%= userPicture %>" alt="User Picture">
         </div>
     </nav>
 
@@ -185,7 +186,7 @@
             </div>
 
             <div class="section">
-                <h2>🏃‍ Physical Activity</h2>
+                <h2>🏃‍ Physical Activities</h2>
                 <label>Exercise frequency/week</label>
                 <select name="exerciseFrequency">
                     <option>None</option><option>1-2 days</option><option>3-5 days</option><option>Daily</option>
