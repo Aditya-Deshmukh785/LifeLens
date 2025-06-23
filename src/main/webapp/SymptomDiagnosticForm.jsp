@@ -73,7 +73,7 @@
             font-size: 1em;
             width: 100%;
             background-color: white;
-            color: #f8fafc;
+            color: black;
         }
 
         textarea {
