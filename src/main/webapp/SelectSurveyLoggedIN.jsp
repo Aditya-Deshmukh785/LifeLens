@@ -168,7 +168,7 @@
 
   <nav>
     <div class="nav-left">
-      <div class="logo">LifeLens 🩺</div>
+      <div class="logo">LifeLens </div>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="#">Survey</a></li>
@@ -209,7 +209,7 @@
 
       <!-- Column 2 -->
       <div class="survey-column">
-        <a href="symptom_form.jsp" class="card-link">
+        <a href="SymptomDiagnosticForm.jsp" class="card-link">
           <div class="card">
             <h2>Symptom Diagnostic Survey</h2>
             <p>Facing issues like fatigue or bloating? Find the likely root cause.</p>
