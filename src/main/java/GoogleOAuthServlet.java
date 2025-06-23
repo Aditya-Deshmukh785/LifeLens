@@ -83,8 +83,9 @@ public class GoogleOAuthServlet extends HttpServlet {
 
         String accessToken = json.getString("access_token");
 
-        // Step 2: Get user info
-        URL userInfoURL = new URL("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + accessToken);
+        
+     // Step 2: Get user info from updated v3 endpoint
+        URL userInfoURL = new URL("https://www.googleapis.com/oauth2/v3/userinfo?access_token=" + accessToken);
         HttpURLConnection userConn = (HttpURLConnection) userInfoURL.openConnection();
         userConn.setRequestMethod("GET");
 
@@ -95,15 +96,19 @@ public class GoogleOAuthServlet extends HttpServlet {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(userConn.getInputStream()));
         StringBuilder userInfo = new StringBuilder();
-        while ((inputLine = reader.readLine()) != null) {
-            userInfo.append(inputLine);
+        String inputLine1;
+        while ((inputLine1 = reader.readLine()) != null) {
+            userInfo.append(inputLine1);
         }
         reader.close();
 
         JSONObject userJSON = new JSONObject(userInfo.toString());
+        System.out.println("🔍 Full user JSON: " + userJSON.toString(2));  // Debug print
+
         String name = userJSON.optString("name", "Unknown");
         String email = userJSON.optString("email", "Not provided");
-        String picture = userJSON.optString("picture", "");
+        String picture = userJSON.optString("picture", "");  // Should now be present
+
 
         HttpSession session = request.getSession();
         session.setAttribute("userName", name);
