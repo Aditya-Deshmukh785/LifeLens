@@ -3,6 +3,8 @@
     String userName = (String) session.getAttribute("userName");
     String userPicture = (String) session.getAttribute("userPicture");
 %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,6 +73,45 @@
       font-size: 0.95em;
       color: #f8fafc;
     }
+    
+    .menu-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: none;
+  color: #f8fafc;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #1e293b;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+.dropdown-content a {
+  color: #f8fafc;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.95em;
+}
+
+.dropdown-content a:hover {
+  background-color: #334155;
+  color: #22c55e;
+}
+    
 
     .container {
       padding: 40px 20px;
@@ -179,6 +220,15 @@
     <div class="nav-right">
       <span class="username"><%= userName %></span>
       <img src="<%= userPicture %>" alt="Profile" class="profile-pic">
+      
+      <div class="menu-wrapper">
+      <button class="menu-button" onclick="toggleDropdown()">☰</button>
+      <div class="dropdown-content" id="userDropdown">
+      <a href="UserHistory.jsp">🕘 View History</a>
+      <a href="Entry.html">🚪 Logout</a>
+      <a href="Feedback.jsp">💬 Feedback</a>
+      </div>
+      </div>
     </div>
   </nav>
 
@@ -209,7 +259,7 @@
 
       <!-- Column 2 -->
       <div class="survey-column">
-        <a href="symptom_form.jsp" class="card-link">
+        <a href="SymptomDiagnosticForm.jsp" class="card-link">
           <div class="card">
             <h2>Symptom Diagnostic Survey</h2>
             <p>Facing issues like fatigue or bloating? Find the likely root cause.</p>
@@ -227,6 +277,24 @@
     </div>
 
   </div>
+  
+  <script>
+  function toggleDropdown() {
+    const dropdown = document.getElementById("userDropdown");
+    dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+  }
+
+  // Optional: Hide dropdown when clicking outside
+  window.onclick = function(event) {
+    if (!event.target.matches('.menu-button')) {
+      const dropdown = document.getElementById("userDropdown");
+      if (dropdown && dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+      }
+    }
+  }
+</script>
+  
 
 </body>
 </html>
