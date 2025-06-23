@@ -271,7 +271,7 @@
 
         <!-- Submit -->
         <button type="submit" class="submit-btn">Get AI Diagnosis</button>
-        <a href="SelectSurvey.html" class="submit-btn">BACK</a>
+        <a href="SelectSurveyLoggedIN.jsp" class="submit-btn">BACK</a>
         <p class="disclaimer">
             <strong>Disclaimer:</strong> This tool provides AI-based suggestions only. Always consult a certified doctor for diagnosis or treatment.
         </p>

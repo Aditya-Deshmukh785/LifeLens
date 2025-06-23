@@ -94,6 +94,8 @@
             border-radius: 6px;
             padding: 12px;
             cursor: pointer;
+                        text-align: center;
+            
             transition: background-color 0.3s ease;
         }
 
@@ -246,7 +248,8 @@
             </div>
 
             <button type="submit" class="submit-btn">Get AI Generated Suggestions</button>
-            <button type="submit" class="submit-btn">BACK</button>
+            <a href="SelectSurveyLoggedIN.jsp" class="submit-btn">BACK</a>
+            <!-- <button type="submit" class="submit-btn">BACK</button>  -->
 
             <p class="disclaimer">
                 <strong>Disclaimer:</strong> This survey is not a medical diagnosis tool. It uses AI to offer lifestyle suggestions based on your responses. Please consult a medical professional for health concerns.
