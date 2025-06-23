@@ -1,153 +1,165 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    String userName = (String) session.getAttribute("userName");
+    String userPicture = (String) session.getAttribute("userPicture");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Symptom Survey | LifeLens</title>
+    <title>Symptom Diagnostic - LifeLens</title>
     <style>
         body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
             background-color: #0f172a;
             color: #f8fafc;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
         }
 
         nav {
             background-color: #092249;
+            padding: 14px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        nav .logo {
+        .logo {
             font-size: 1.5em;
             font-weight: bold;
             color: #22c55e;
         }
 
-        nav ul {
-            list-style: none;
+        .profile {
             display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
+            align-items: center;
+            gap: 10px;
         }
 
-        nav ul li a {
-            color: #f8fafc;
-            text-decoration: none;
-            font-size: 1em;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #22c55e;
+        .profile img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
         }
 
         .form-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 40px auto;
             background-color: #1e293b;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
 
-        h2 {
+        h1, h2 {
+            color: #22c55e;
             text-align: center;
-            margin-bottom: 20px;
-            color: #f1f5f9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #f8fafc;
+            font-weight: 500;
         }
 
-        input[type="text"],
-        input[type="number"],
-        select,
-        textarea {
-            width: 100%;
+        input, select, textarea {
             padding: 10px;
-            margin-top: 6px;
-            border-radius: 8px;
+            border-radius: 6px;
             border: none;
-            background-color: #334155;
-            color: #f8fafc;
             font-size: 1em;
+            width: 100%;
+            background-color: white;
+            color: #f8fafc;
         }
 
         textarea {
             resize: vertical;
-            min-height: 80px;
         }
 
-        .btn {
-            display: block;
-            width: 100%;
-            margin-top: 25px;
-            padding: 12px;
-            background-color: #16a34a;
-            color: white;
+        .section {
+            background-color: #334155;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .submit-btn {
+            background-color: #22c55e;
+            color: #0f172a;
+            font-weight: bold;
             border: none;
-            border-radius: 8px;
-            font-size: 1em;
+            border-radius: 6px;
+            padding: 12px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        .btn:hover {
-            background-color: #15803d;
+        .submit-btn:hover {
+            background-color: #1cb74d;
+        }
+
+        .disclaimer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #cbd5e1;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo">LifeLens 🩺</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="symptom_survey.jsp">Symptom Survey</a></li>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
+        <div class="profile">
+            <span><%= userName %></span>
+            <img src="<%= userPicture %>" alt="User Picture">
+        </div>
     </nav>
 
     <div class="form-container">
-        <h2>Symptom Diagnostic Form</h2>
+        <h1>Symptom Diagnostic Survey</h1>
         <form action="SymptomProcessor.jsp" method="post">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+            <div class="section">
+                <h2>👤 Personal Details</h2>
+                <label>Full Name</label>
+                <input type="text" name="name" required>
 
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" min="0" required>
+                <label>Age</label>
+                <input type="number" name="age" min="0" required>
 
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="">Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-            </select>
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
 
-            <label for="symptoms">Your Symptoms:</label>
-            <textarea id="symptoms" name="symptoms" placeholder="e.g. headache, sore throat, fatigue..." required></textarea>
+            <div class="section">
+                <h2>🩺 Symptom Information</h2>
+                <label>Your Symptoms</label>
+                <textarea name="symptoms" placeholder="e.g. headacge,sore throat, faituge..." required></textarea>
 
-            <label for="duration">How long have you had these symptoms?</label>
-            <input type="text" id="duration" name="duration" placeholder="e.g. 3 days, 1 week" required>
+                <label>Duration of Symptoms</label>
+                <input type="text" name="duration" placeholder="e.g. 3 days, 1 week" required>
+            </div>
 
-            <label for="existing">Any existing medical conditions?</label>
-            <textarea id="existing" name="existing" placeholder="e.g. diabetes, asthma, none"></textarea>
+            <div class="section">
+                <h2>📋 Medical Background</h2>
+                <label>Any existing medical conditions?</label>
+                <textarea name="existing" placeholder="e.g. diabetes, asthma, none"></textarea>
+            </div>
 
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="submit-btn">Get Diagnostic Suggestions</button>
+            <a href="SelectSurvey.html" class="submit-btn" style="text-align:center; display:block; text-decoration:none;">BACK</a>
+
+            <p class="disclaimer">
+                <strong>Disclaimer:</strong> This tool provides AI-based insights only. For any health condition, consult a qualified medical professional.
+            </p>
         </form>
     </div>
-
 </body>
 </html>
