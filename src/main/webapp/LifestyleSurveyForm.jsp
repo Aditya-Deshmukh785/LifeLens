@@ -266,7 +266,7 @@
             </div>
 
             <button type="submit" class="submit-btn">Get AI Generated Suggestions</button>
-            <a href="SelectSurveyLoggedIN.jsp" class="back-btn">⬅ Back</a>
+            <a href="LifestyleFormServlet" class="back-btn">⬅ Back</a>
 
             <p class="disclaimer">
                 <strong>Disclaimer:</strong> This survey is not a medical diagnosis tool. It uses AI to offer lifestyle suggestions based on your responses. Please consult a medical professional for health concerns.
