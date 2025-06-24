@@ -134,6 +134,10 @@
             color: #cbd5e1;
             margin-top: 30px;
         }
+        
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -155,7 +159,7 @@
             <label>Full Name</label>
             <input type="text" name="name" placeholder="Ajay Kapoor" required>
             <label>Age</label>
-            <input type="number" name="age" min="0" placeholder="22" required>
+            <input type="number" name="age" placeholder="22" required>
             <label>Gender</label>
             <select name="gender" required>
                 <option value="">Select Gender</option>
@@ -271,7 +275,8 @@
 
         <!-- Submit -->
         <button type="submit" class="submit-btn">Get AI Diagnosis</button>
-        <a href="SelectSurvey.html" class="submit-btn">BACK</a>
+
+        <a href="SelectSurveyLoggedIN.jsp" class="submit-btn">⬅ BACK</a>
         <p class="disclaimer">
             <strong>Disclaimer:</strong> This tool provides AI-based suggestions only. Always consult a certified doctor for diagnosis or treatment.
         </p>

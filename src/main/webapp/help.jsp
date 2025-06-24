@@ -28,25 +28,6 @@
             color: #22c55e;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li a {
-            color: #f8fafc;
-            text-decoration: none;
-            font-size: 1em;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #22c55e;
-        }
-
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -83,11 +64,34 @@
 
         a {
             color: #38bdf8;
+            text-decoration: none;
         }
 
         a:hover {
             color: #22c55e;
         }
+
+        /* Back Button Styling */
+        .back-button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .back-button {
+            padding: 12px 24px;
+            background-color: #16a34a;
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background-color: #15803d;
+        }
+
     </style>
 </head>
 <body>
@@ -95,12 +99,6 @@
 <!-- Navigation Bar -->
 <nav>
     <div class="logo">LifeLens 🩺</div>
-    <ul>
-        <li><a href="Entry.html">Home</a></li>
-        <li><a href="login.jsp">Survey</a></li>
-        <li><a href="help.jsp">Help</a></li>
-        <li><a href="#">About</a></li>
-    </ul>
 </nav>
 
 <!-- Help Content -->
@@ -144,6 +142,11 @@
         <h2>📬 Contact Us</h2>
         <p>If you have feedback or face issues, please email us at <a href="mailto:support@lifelens.health">support@lifelens.health</a>.</p>
     </section>
+</div>
+
+<!-- Themed Back Button -->
+<div class="back-button-container">
+    <a href="Entry.html" class="back-button">Go Back</a>
 </div>
 
 <!-- Footer -->
