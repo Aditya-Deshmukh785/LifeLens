@@ -77,6 +77,35 @@
             background-color: #092249;
             font-size: 0.9em;
         }
+
+        a {
+            color: #38bdf8;
+        }
+
+        a:hover {
+            color: #22c55e;
+        }
+
+        /* Back Button Styling */
+        .back-button-container {
+            text-align: center;
+            margin: 50px 0 30px;
+        }
+
+        .back-button {
+            padding: 12px 24px;
+            background-color: #16a34a;
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background-color: #15803d;
+        }
     </style>
 </head>
 <body>
@@ -84,12 +113,6 @@
 <!-- Navigation Bar -->
 <nav>
     <div class="logo">LifeLens 🩺</div>
-    <ul>
-        <li><a href="Entry.html">Home</a></li>
-        <li><a href="login.jsp">Survey</a></li>
-        <li><a href="help.jsp">Help</a></li>
-        <li><a href="about.jsp">About</a></li>
-    </ul>
 </nav>
 
 <!-- About Content -->
@@ -115,12 +138,15 @@
         <p>We are a team of passionate computer science students and developers who care deeply about using our skills for real-world impact. This project is part of our academic and social initiative to combine technology with health awareness.</p>
     </section>
 
-    
-
     <section>
         <h2>📫 Contact</h2>
         <p>If you'd like to collaborate, give feedback, or just say hello, email us at: <a href="mailto:support@lifelens.health">support@lifelens.health</a></p>
     </section>
+</div>
+
+<!-- Themed Back Button -->
+<div class="back-button-container">
+    <a href="Entry.html" class="back-button"> Go Back</a>
 </div>
 
 <!-- Footer -->
