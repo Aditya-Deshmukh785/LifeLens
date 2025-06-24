@@ -209,12 +209,12 @@
 
   <nav>
     <div class="nav-left">
-      <div class="logo">LifeLens </div>
+      <div class="logo">LifeLens 🩺</div>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="Entry.html">Home</a></li>
         <li><a href="#">Survey</a></li>
-        <li><a href="#">Help</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="help.jsp">Help</a></li>
+        <li><a href="about.jsp">About</a></li>
       </ul>
     </div>
     <div class="nav-right">

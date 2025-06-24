@@ -33,14 +33,14 @@
       font-weight: bold;
     }
 
-    textarea, input[type="text"] {
+    textarea, input[type="text"], input[type="email"] {
       width: 100%;
       padding: 10px;
       border-radius: 8px;
       border: none;
       margin-top: 8px;
-      background-color: #334155;
-      color: #f8fafc;
+      background-color: white;
+      color: black;
     }
 
     textarea {
@@ -74,8 +74,17 @@
   <div class="feedback-form">
     <h2>💬 Send Us Your Feedback</h2>
     <form action="FeedbackServlet" method="post">
-      <label>Your Feedback</label>
-      <textarea name="feedbackText" required placeholder="Write your feedback here..."></textarea>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+      <label for="shortMessage">Short Message</label>
+      <input type="text" id="shortMessage" name="shortMessage" required placeholder="e.g. App is really helpful!">
+
+      <label for="description">Detailed Feedback</label>
+      <textarea id="description" name="description" required placeholder="Write your detailed feedback here..."></textarea>
 
       <button type="submit">Submit Feedback</button>
     </form>
