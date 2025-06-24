@@ -64,6 +64,7 @@
 
         a {
             color: #38bdf8;
+            text-decoration: none;
         }
 
         a:hover {
