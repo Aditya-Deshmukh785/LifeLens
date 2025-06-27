@@ -108,6 +108,31 @@
             background-color: #1cb74d;
         }
 
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-left: 10px;
+            margin-top: 8px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: normal;
+            color: #f8fafc;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            cursor: pointer;
+        }
+
         .disclaimer {
             text-align: center;
             font-size: 0.9em;
@@ -131,14 +156,14 @@
 
     <div class="form-container">
         <h1>Lifestyle Risk Assessment</h1>
-        <form action="SuggestedLifestyleChanges.jsp" method="post">
+        <form action="LifestyleFormServlet" method="post">
             <div class="section">
                 <h2>📋 General Information</h2>
                 <label>Full Name</label>
                 <input type="text" name="fullName" placeholder="Enter Your Name" required>
 
                 <label>Age</label>
-                <input type="number" name="age" placeholder="Enter Your Age" required>
+                <input type="number" name="age" placeholder="Enter Your Age" min="5" max="100" required>
 
                 <label>Gender</label>
                 <select name="gender" required>
@@ -149,16 +174,16 @@
                 </select>
 
                 <label>Height (cm)</label>
-                <input type="number" name="height" placeholder="Enter Your Height" required>
+                <input type="number" name="height" placeholder="Enter Your Height" min="50" max="300" required>
 
                 <label>Weight (kg)</label>
-                <input type="number" name="weight" placeholder="Enter Your Weight" required>
+                <input type="number" name="weight" placeholder="Enter Your Weight" min="10" max="300" required>
             </div>
 
             <div class="section">
                 <h2>🍿 Sleep Habits</h2>
                 <label>Average sleep duration (hrs)</label>
-                <input type="number" name="sleepDuration" placeholder="Your Sleep Duration" required>
+                <input type="number" name="sleepDuration" placeholder="Your Sleep Duration" min="1" max="24" required>
 
                 <label>Sleep timing (e.g. 10 PM - 6 AM)</label>
                 <input type="text" name="sleepTiming" placeholder="Your Sleep Hours" required>
@@ -188,7 +213,7 @@
                 </select>
 
                 <label>Water intake (liters/day)</label>
-                <input type="number" name="waterIntake" placeholder="Enter daily water intake" step="0.1" required>
+                <input type="number" name="waterIntake" placeholder="Enter daily water intake" step="0.1" min="0.1" max="10" required>
 
                 <label>Junk food consumption</label>
                 <select name="junkFood" required>
@@ -202,19 +227,30 @@
 
             <div class="section">
                 <h2>🏃‍ Physical Activities</h2>
+
                 <label>Exercise frequency/week</label>
                 <select name="exerciseFrequency" required>
                     <option value="" disabled selected hidden>Select frequency</option>
-                    <option>None</option><option>1-2 days</option><option>3-5 days</option><option>Daily</option>
+                    <option>None</option>
+                    <option>1-2 days</option>
+                    <option>3-5 days</option>
+                    <option>Daily</option>
                 </select>
 
                 <label>Exercise duration (minutes)</label>
                 <input type="number" name="exerciseDuration" placeholder="Enter duration in minutes">
 
                 <label>Type of activity</label>
-                <select name="activityType" multiple>
-                    <option>Walking</option><option>Gym</option><option>Yoga</option><option>Sports</option><option>None</option>
-                </select>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="activityType" value="Walking"> Walking</label>
+                    <label><input type="checkbox" name="activityType" value="Gym"> Gym</label>
+                    <label><input type="checkbox" name="activityType" value="Yoga"> Yoga</label>
+                    <label><input type="checkbox" name="activityType" value="Sports"> Sports</label>
+                    <label><input type="checkbox" name="activityType" value="None"> None</label>
+                </div>
+
+                <label>Any Other Activity</label>
+                <input type="text" name="otherActivity" placeholder="e.g. Cycling, Dancing">
             </div>
 
             <div class="section">
@@ -226,7 +262,7 @@
                 </select>
 
                 <label>Screen time (non-work hrs/day)</label>
-                <input type="number" name="screenTime" placeholder="Enter daily screen time">
+                <input type="number" name="screenTime" placeholder="Enter daily screen time" min="0" max="24">
 
                 <label>Work-life balance rating</label>
                 <select name="workLife" required>
@@ -244,16 +280,16 @@
                 </select>
 
                 <label>Working hours/day</label>
-                <input type="number" name="workHours" placeholder="Enter working hours">
+                <input type="number" name="workHours" placeholder="Enter working hours" min="0" max="24">
 
                 <label>Commute time (minutes)</label>
-                <input type="number" name="commuteTime" placeholder="Enter commute time">
+                <input type="number" name="commuteTime" placeholder="Enter commute time" min="0" max="300">
             </div>
 
             <div class="section">
                 <h2>⚠️ Health & Deficiency Check</h2>
                 <label>How often do you fall sick in a year?</label>
-                <input type="number" name="sickFrequency" placeholder="Times per year">
+                <input type="number" name="sickFrequency" placeholder="Times per year" min="0" max="30">
 
                 <label>Do you experience hair fall?</label>
                 <select name="hairFall" required>
@@ -266,7 +302,7 @@
             </div>
 
             <button type="submit" class="submit-btn">Get AI Generated Suggestions</button>
-            <a href="LifestyleFormServlet" class="back-btn">⬅ Back</a>
+            <a href="SelectSurveyLoggedIN.jsp" class="back-btn">⬅ Back</a>
 
             <p class="disclaimer">
                 <strong>Disclaimer:</strong> This survey is not a medical diagnosis tool. It uses AI to offer lifestyle suggestions based on your responses. Please consult a medical professional for health concerns.

@@ -157,9 +157,9 @@
         <div class="section">
             <h2>👤 Personal Details</h2>
             <label>Full Name</label>
-            <input type="text" name="name" placeholder="Ajay Kapoor" required>
+            <input type="text" name="name" placeholder="Enter Your Name" required>
             <label>Age</label>
-            <input type="number" name="age" placeholder="22" required>
+            <input type="number" name="age" placeholder="Enter Your Age" required>
             <label>Gender</label>
             <select name="gender" required>
                 <option value="">Select Gender</option>
@@ -187,18 +187,18 @@
             <label>Duration of Symptoms</label>
             <input type="text" name="duration" placeholder="e.g. 3 days, 1 week" required>
             <label>Body Temperature (°C)</label>
-            <input type="number" name="temperature" placeholder="37" step="0.1" required>
+            <input type="number" name="temperature" placeholder="Enter Body Temperature" step="0.1" required>
             <label>Heart Rate</label>
-            <input type="number" name="heartRate" placeholder="80 bpm" required>
+            <input type="number" name="heartRate" placeholder="Enter Your Heartrate" required>
             <label>Blood Pressure</label>
-            <input type="text" name="bp" placeholder="e.g. 120/80" required>
+            <input type="text" name="bp" placeholder="Enter Your Blood Pressure" required>
         </div>
 
         <!-- Diet -->
         <div class="section">
             <h2>🍽 Recent Diet (Last 2 Days)</h2>
-            <label>What did you mostly eat?</label>
-            <textarea name="dietDetails" required></textarea>
+            <label>Food consumed (last 2 days only)</label>
+            <textarea name="dietDetails" required placeholder="e.g. Dal(Toor) and Roti(Wheat)"></textarea>
             <label>Did you eat out or order online?</label>
             <select name="ateOut">
                 <option>Yes</option>
@@ -211,14 +211,14 @@
                 <option>High</option>
             </select>
             <label>Water intake per day (liters)</label>
-            <input type="number" name="waterIntake" step="0.1">
+            <input type="number" name="waterIntake" placeholder="Enter Your Water Intake" step="0.1">
         </div>
 
         <!-- Sleep -->
         <div class="section">
             <h2>💤 Sleep & Rest</h2>
             <label>Total sleep hours per night</label>
-            <input type="number" name="sleepHours">
+            <input type="number" name="sleepHours" placeholder="How Many Hours You Sleep">
             <label>Do you wake up feeling rested?</label>
             <select name="feelRested">
                 <option>Yes</option>
@@ -240,7 +240,7 @@
                 <option>No</option>
             </select>
             <label>Screen time excluding work (hrs/day)</label>
-            <input type="number" name="screenTime">
+            <input type="number" name="screenTime" placeholder="Enter Your Screen Time">
             <label>Mood in the last few days</label>
             <select name="recentMood">
                 <option>Stable</option>
