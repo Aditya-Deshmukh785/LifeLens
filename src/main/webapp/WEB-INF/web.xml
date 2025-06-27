@@ -15,5 +15,15 @@
         <servlet-name>GoogleOAuthServlet</servlet-name>
         <url-pattern>/GoogleOAuthServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+    <servlet-name>LifestyleFormServlet</servlet-name>
+    <servlet-class>LifestyleFormServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>LifestyleFormServlet</servlet-name>
+    <url-pattern>/LifestyleFormServlet</url-pattern>
+</servlet-mapping>
 
 </web-app>

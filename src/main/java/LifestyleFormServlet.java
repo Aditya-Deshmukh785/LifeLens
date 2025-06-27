@@ -2,108 +2,133 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import java.io.*;
 import java.net.*;
+import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class LifestyleFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // 📋 General Info
-        String fullName = request.getParameter("fullName");
-        String age = request.getParameter("age");
-        String gender = request.getParameter("gender");
-        String height = request.getParameter("height");
-        String weight = request.getParameter("weight");
+        JSONObject jsonPayload = new JSONObject();
 
-        // 🛏 Sleep Habits
-        String sleepDuration = request.getParameter("sleepDuration");
-        String sleepTiming = request.getParameter("sleepTiming");
-        String sleepQuality = request.getParameter("sleepQuality");
+        // 🧍 General Info
+        jsonPayload.put("fullName", request.getParameter("fullName"));
+        jsonPayload.put("age", parseInt(request.getParameter("age")));
+        jsonPayload.put("gender", request.getParameter("gender"));
+        jsonPayload.put("height", parseDouble(request.getParameter("height")));
+        jsonPayload.put("weight", parseDouble(request.getParameter("weight")));
 
-        // 🍽️ Diet & Nutrition
-        String mealsPerDay = request.getParameter("mealsPerDay");
-        String snacking = request.getParameter("snacking");
-        String waterIntake = request.getParameter("waterIntake");
-        String junkFood = request.getParameter("junkFood");
-        String fruitVegServings = request.getParameter("fruitVegServings");
+        // 💤 Sleep Habits
+        jsonPayload.put("sleepDuration", parseDouble(request.getParameter("sleepDuration")));
+        jsonPayload.put("sleepTiming", request.getParameter("sleepTiming"));
+        jsonPayload.put("sleepQuality", request.getParameter("sleepQuality"));
 
-        // 🏃 Physical Activities
-        String exerciseFrequency = request.getParameter("exerciseFrequency");
-        String exerciseDuration = request.getParameter("exerciseDuration");
-        String[] activityType = request.getParameterValues("activityType");
+        // 🥗 Diet & Nutrition
+        jsonPayload.put("mealsPerDay", parseInt(request.getParameter("mealsPerDay")));
+        jsonPayload.put("snacking", request.getParameter("snacking"));
+        jsonPayload.put("waterIntake", parseDouble(request.getParameter("waterIntake")));
+        jsonPayload.put("junkFood", request.getParameter("junkFood"));
+        jsonPayload.put("fruitVegServings", parseInt(request.getParameter("fruitVegServings")));
 
-        // 🧠 Mental Wellness
-        String stress = request.getParameter("stress");
-        String screenTime = request.getParameter("screenTime");
-        String workLife = request.getParameter("workLife");
+        // 🏃 Physical Activity
+        jsonPayload.put("exerciseFrequency", request.getParameter("exerciseFrequency"));
+        jsonPayload.put("exerciseDuration", parseInt(request.getParameter("exerciseDuration")));
 
-        // 💼 Lifestyle & Work
-        String jobType = request.getParameter("jobType");
-        String workHours = request.getParameter("workHours");
-        String commuteTime = request.getParameter("commuteTime");
-
-        // ⚠️ Deficiency Check
-        String sickFrequency = request.getParameter("sickFrequency");
-        String hairFall = request.getParameter("hairFall");
-        String diseaseDetails = request.getParameter("diseaseDetails");
-
-        // Convert activityType[] to comma-separated string
-        String activityString = "";
-        if (activityType != null) {
-            activityString = String.join("\", \"", activityType);
-        }
-
-        // 🧾 1. Construct JSON Payload
-        String jsonInput = String.format(
-            "{" +
-                "\"fullName\":\"%s\", \"age\":\"%s\", \"gender\":\"%s\", " +
-                "\"height\":\"%s\", \"weight\":\"%s\", " +
-                "\"sleepDuration\":\"%s\", \"sleepTiming\":\"%s\", \"sleepQuality\":\"%s\", " +
-                "\"mealsPerDay\":\"%s\", \"snacking\":\"%s\", \"waterIntake\":\"%s\", \"junkFood\":\"%s\", \"fruitVegServings\":\"%s\", " +
-                "\"exerciseFrequency\":\"%s\", \"exerciseDuration\":\"%s\", \"activityType\":[\"%s\"], " +
-                "\"stress\":\"%s\", \"screenTime\":\"%s\", \"workLife\":\"%s\", " +
-                "\"jobType\":\"%s\", \"workHours\":\"%s\", \"commuteTime\":\"%s\", " +
-                "\"sickFrequency\":\"%s\", \"hairFall\":\"%s\", \"diseaseDetails\":\"%s\"" +
-            "}",
-            fullName, age, gender, height, weight,
-            sleepDuration, sleepTiming, sleepQuality,
-            mealsPerDay, snacking, waterIntake, junkFood, fruitVegServings,
-            exerciseFrequency, exerciseDuration, activityString,
-            stress, screenTime, workLife,
-            jobType, workHours, commuteTime,
-            sickFrequency, hairFall, diseaseDetails
-        );
-
-        
-        URL url = new URL("http://localhost:5000/generate_suggestion");
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setDoOutput(true);
-
-        try (OutputStream os = conn.getOutputStream()) {
-            os.write(jsonInput.getBytes("UTF-8"));
-            os.flush();
-        }
-
-        
-        StringBuilder responseText = new StringBuilder();
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
-            String line;
-            while ((line = in.readLine()) != null) {
-                responseText.append(line);
+        JSONArray activityArray = new JSONArray();
+        String[] activityTypes = request.getParameterValues("activityType");
+        if (activityTypes != null) {
+            for (String activity : activityTypes) {
+                activityArray.put(activity);
             }
         }
+        jsonPayload.put("activityType", activityArray);
 
-        
-        String suggestionJson = responseText.toString();
-        String suggestion = suggestionJson.replace("{\"suggestion\":\"", "")
-                                          .replace("\"}", "")
-                                          .replace("\\n", "<br>") // format for HTML
-                                          .replace("\\\"", "\"");
+        jsonPayload.put("otherActivity", request.getParameter("otherActivity"));
 
-        
+        // 🧠 Mental Wellness
+        jsonPayload.put("stress", request.getParameter("stress"));
+        jsonPayload.put("screenTime", parseDouble(request.getParameter("screenTime")));
+        jsonPayload.put("workLife", request.getParameter("workLife"));
+
+        // 💼 Work & Lifestyle
+        jsonPayload.put("jobType", request.getParameter("jobType"));
+        jsonPayload.put("workHours", parseDouble(request.getParameter("workHours")));
+        jsonPayload.put("commuteTime", parseDouble(request.getParameter("commuteTime")));
+
+        // 🩺 Health & Deficiency
+        jsonPayload.put("sickFrequency", parseInt(request.getParameter("sickFrequency")));
+        jsonPayload.put("hairFall", request.getParameter("hairFall"));
+        jsonPayload.put("diseaseDetails", request.getParameter("diseaseDetails"));
+
+        // 📤 Debug: print payload
+        System.out.println("Sending JSON to Flask:");
+        System.out.println(jsonPayload.toString(2));
+
+        // 🌐 HTTP Request to Flask
+        String suggestion = "No suggestions generated";
+        HttpURLConnection conn = null;
+
+        try {
+            URL url = new URL("http://localhost:5000/generate_suggestion");
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(5000);
+            conn.setDoOutput(true);
+
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(jsonPayload.toString().getBytes("UTF-8"));
+            }
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                try (BufferedReader err = new BufferedReader(
+                        new InputStreamReader(conn.getErrorStream()))) {
+                    String errorLine;
+                    StringBuilder errorResponse = new StringBuilder();
+                    while ((errorLine = err.readLine()) != null) {
+                        errorResponse.append(errorLine);
+                    }
+                    throw new IOException("HTTP " + responseCode + ": " + errorResponse.toString());
+                }
+            }
+
+            try (BufferedReader in = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()))) {
+                StringBuilder responseText = new StringBuilder();
+                String line;
+                while ((line = in.readLine()) != null) {
+                    responseText.append(line);
+                }
+                JSONObject jsonResponse = new JSONObject(responseText.toString());
+                suggestion = jsonResponse.getString("suggestion").replace("\n", "<br>");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            suggestion = "⚠ Error: " + e.getMessage();
+        } finally {
+            if (conn != null) conn.disconnect();
+        }
+
         request.setAttribute("aiSuggestion", suggestion);
         request.getRequestDispatcher("SuggestedLifestyleChanges.jsp").forward(request, response);
-        
+    }
+
+    private int parseInt(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    private double parseDouble(String value) {
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
     }
 }
