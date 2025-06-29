@@ -73,8 +73,8 @@ public class LifestyleFormServlet extends HttpServlet {
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
-            conn.setConnectTimeout(5000);
-            conn.setReadTimeout(5000);
+            conn.setConnectTimeout(15000);
+            conn.setReadTimeout(15000);
             conn.setDoOutput(true);
 
             try (OutputStream os = conn.getOutputStream()) {
