@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page session="true" %>
 <!DOCTYPE html>
@@ -6,6 +7,7 @@
     <meta charset="UTF-8">
     <title>AI Diagnosis - LifeLens</title>
     <style>
+
     * {
         margin: 0;
         padding: 0;
@@ -439,19 +441,23 @@
             transition: none !important;
         }
     }
+
     </style>
 </head>
 <body>
+
 
 <!-- Navigation Bar -->
 <nav>
     <div class="nav-left">
       <div class="logo">LifeLens 🩺</div>
       <ul>
+
         <li><a href="Entry.html">Home</a></li>
         <li><a href="SelectSurveyLoggedIN.jsp">Survey</a></li>
         <li><a href="help.jsp">Help</a></li>
         <li><a href="about.jsp">About</a></li>
+
       </ul>
     </div>
     <div class="nav-right">
@@ -465,6 +471,7 @@
         <%
             }
         %>
+
       </div>
     </div>
     
@@ -472,6 +479,7 @@
 
 <!-- Main Content -->
 <div class="container" id="report-content">
+
     <h1>🧠 AI Diagnosis Result</h1>
 
     <div class="ai-output">
@@ -479,12 +487,13 @@
             String suggestion = (String) request.getAttribute("aiSuggestion");
 
             if (suggestion != null && !suggestion.trim().isEmpty()) {
-                // Clean up the suggestion text
+
                 suggestion = suggestion.replaceAll("\\r", "");
                 String[] lines = suggestion.split("\\n");
 
                 for (String line : lines) {
                     line = line.trim();
+
                     
                     // Skip empty lines
                     if (line.isEmpty()) {
@@ -502,14 +511,17 @@
 
                     // Skip disclaimer lines (they're shown separately)
                     if (!line.toLowerCase().startsWith("disclaimer")) {
+
                         out.println("<div class='output-line'>" + line + "</div>");
                     }
                 }
             } else {
+
                 out.print("<div class='output-line'>No diagnosis received.</div>");
             }
         %>
     </div>
+
 
     <!-- BUTTONS SIDE-BY-SIDE -->
     <div class="no-print button-container">

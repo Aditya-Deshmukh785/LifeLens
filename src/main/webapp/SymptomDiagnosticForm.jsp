@@ -9,11 +9,13 @@
     <meta charset="UTF-8">
     <title>Symptom Diagnostic - LifeLens</title>
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
 
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
@@ -57,7 +59,6 @@
             90% { opacity: 1; }
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
-
         nav {
             background: rgba(9, 34, 73, 0.9);
             backdrop-filter: blur(20px);
@@ -70,7 +71,6 @@
             top: 0;
             z-index: 100;
         }
-
         .logo {
             font-size: 1.8em;
             font-weight: 800;
@@ -82,7 +82,6 @@
             align-items: center;
             gap: 8px;
         }
-
         .profile {
             display: flex;
             align-items: center;
@@ -98,14 +97,12 @@
             background: rgba(34, 197, 94, 0.2);
             transform: translateY(-1px);
         }
-
         .profile img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             border: 2px solid rgba(34, 197, 94, 0.5);
         }
-
         .form-container {
             max-width: 900px;
             margin: 40px auto;
@@ -118,6 +115,7 @@
             animation: slideUp 0.8s ease-out;
         }
 
+
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -126,6 +124,7 @@
         .form-header {
             background: linear-gradient(135deg, #22c55e, #16a34a);
             padding: 30px;
+
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -167,6 +166,7 @@
             padding: 30px;
         }
 
+
         .section {
             background: linear-gradient(145deg, rgba(51, 65, 85, 0.6), rgba(71, 85, 105, 0.4));
             margin-bottom: 25px;
@@ -205,6 +205,7 @@
             font-size: 1.4em;
             font-weight: 700;
             margin-bottom: 20px;
+
             display: flex;
             align-items: center;
             gap: 10px;
@@ -217,7 +218,6 @@
             background: linear-gradient(90deg, #22c55e, transparent);
             border-radius: 1px;
         }
-
         label {
             display: block;
             margin: 15px 0 8px 0;
@@ -226,7 +226,9 @@
             font-size: 0.95em;
         }
 
+
         input, select, textarea {
+
             width: 100%;
             padding: 12px 16px;
             border: 2px solid rgba(34, 197, 94, 0.3);
@@ -237,6 +239,7 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
+
 
         input:focus, select:focus, textarea:focus {
             outline: none;
@@ -257,14 +260,15 @@
         textarea {
             resize: vertical;
             min-height: 80px;
-        }
 
+        }
         .checkbox-group {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 12px;
             padding: 15px 0;
         }
+
 
         .checkbox-group label {
             display: flex;
@@ -302,6 +306,7 @@
 
         .submit-btn, .back-btn {
             background: linear-gradient(135deg, #22c55e, #10b981);
+
             color: #0f172a;
             font-weight: 700;
             border: none;
@@ -317,6 +322,7 @@
             position: relative;
             overflow: hidden;
         }
+
 
         .submit-btn::before, .back-btn::before {
             content: '';
@@ -344,6 +350,7 @@
             margin-bottom: 20px;
         }
 
+
         .disclaimer {
             text-align: center;
             font-size: 0.9em;
@@ -354,6 +361,7 @@
             border-radius: 12px;
             border: 1px solid rgba(239, 68, 68, 0.3);
         }
+
 
         .progress-bar {
             position: fixed;
@@ -448,17 +456,21 @@
         <div class="profile">
             <span><%= userName %></span>
             <img src="<%= userPicture %>" alt="User Picture">
+
         </div>
     </nav>
+
 
     <div class="form-container">
         <div class="form-header">
             <h1>Symptom Diagnostic Survey</h1>
             <p class="form-subtitle">AI-powered symptom analysis for early health insights</p>
+
         </div>
         
         <div class="form-content">
             <form action="SymptomDiagnosticFormServlet" method="post" id="symptomForm">
+
 
                 <!-- Personal Details -->
                 <div class="section">
@@ -760,5 +772,6 @@
             });
         });
     </script>
+
 </body>
 </html>

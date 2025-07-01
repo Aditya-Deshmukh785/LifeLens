@@ -338,6 +338,31 @@
             margin-bottom: 20px;
         }
 
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-left: 10px;
+            margin-top: 8px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: normal;
+            color: #f8fafc;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            cursor: pointer;
+        }
+
         .disclaimer {
             text-align: center;
             font-size: 0.9em;
@@ -412,6 +437,7 @@
     </nav>
 
     <div class="form-container">
+
         <div class="form-header">
             <h1>Lifestyle Risk Assessment</h1>
             <p class="form-subtitle">Discover personalized insights for a healthier you</p>

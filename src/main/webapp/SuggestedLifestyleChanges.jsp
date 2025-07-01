@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>AI Suggestions - LifeLens</title>
     <style>
+
     * {
         margin: 0;
         padding: 0;
@@ -110,11 +111,13 @@
     .profile-info {
         display: flex;
         align-items: center;
+
         gap: 12px;
         padding: 8px 16px;
         background: rgba(34, 197, 94, 0.1);
         border-radius: 25px;
         border: 1px solid rgba(34, 197, 94, 0.3);
+
     }
 
     .profile-info img {
@@ -122,6 +125,7 @@
         height: 40px;
         border-radius: 50%;
         border: 2px solid #22c55e;
+
         box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
         transition: all 0.3s ease;
     }
@@ -485,6 +489,7 @@
                 for (String line : lines) {
                     line = line.trim();
                     line = line.replaceFirst("^[\\*•\\.\\-\\u2022\\s]+", "");  // remove bullets/dots
+
 
                     // Bold subheadings marked by **text**
                     line = line.replaceAll("\\*\\*(.*?)\\*\\*", "<span class='sub-heading'>$1</span>");
