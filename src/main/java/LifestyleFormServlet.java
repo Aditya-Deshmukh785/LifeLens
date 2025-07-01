@@ -107,7 +107,8 @@ public class LifestyleFormServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            suggestion = "⚠ Error: " + e.getMessage();
+            suggestion = "⚠️ Error: " + e.getMessage();
+
         } finally {
             if (conn != null) conn.disconnect();
         }
