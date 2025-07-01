@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Suggestions - LifeLens</title>
+    <title>AI Diagnosis - LifeLens</title>
     <style>
     * {
         margin: 0;
@@ -343,15 +343,15 @@
     }
 
     .disclaimer {
-            text-align: center;
-            font-size: 0.9em;
-            color: rgba(203, 213, 225, 0.8);
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(239, 68, 68, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
+        text-align: center;
+        font-size: 0.9em;
+        color: rgba(203, 213, 225, 0.8);
+        margin-top: 25px;
+        padding: 20px;
+        background: rgba(239, 68, 68, 0.1);
+        border-radius: 12px;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
 
     /* Loading animation for content */
     .ai-output.loading {
@@ -400,7 +400,7 @@
     }
 
     @media print {
-        nav, .profile-info, .no-print, .button-container {
+        .no-print, nav, .profile-info, .button-container {
             display: none !important;
         }
 
@@ -471,30 +471,42 @@
 </nav>
 
 <!-- Main Content -->
-<div class="container">
-    <h1>🧠 AI-Powered Lifestyle Insight</h1>
+<div class="container" id="report-content">
+    <h1>🧠 AI Diagnosis Result</h1>
 
     <div class="ai-output">
         <%
             String suggestion = (String) request.getAttribute("aiSuggestion");
 
             if (suggestion != null && !suggestion.trim().isEmpty()) {
+                // Clean up the suggestion text
                 suggestion = suggestion.replaceAll("\\r", "");
                 String[] lines = suggestion.split("\\n");
 
                 for (String line : lines) {
                     line = line.trim();
-                    line = line.replaceFirst("^[\\*•\\.\\-\\u2022\\s]+", "");  // remove bullets/dots
+                    
+                    // Skip empty lines
+                    if (line.isEmpty()) {
+                        continue;
+                    }
 
-                    // Bold subheadings marked by **text**
-                    line = line.replaceAll("\\*\\*(.*?)\\*\\*", "<span class='sub-heading'>$1</span>");
+                    // Remove all asterisks at the beginning of lines
+                    line = line.replaceAll("^\\*+\\s*", "");
+                    
+                    // Convert text wrapped in **text** to sub-headings
+                    line = line.replaceAll("\\*\\*([^*]+)\\*\\*", "<span class='sub-heading'>$1</span>");
+                    
+                    // Remove any remaining asterisks
+                    line = line.replaceAll("\\*", "");
 
-                    if (!line.toLowerCase().startsWith("disclaimer:")) {
+                    // Skip disclaimer lines (they're shown separately)
+                    if (!line.toLowerCase().startsWith("disclaimer")) {
                         out.println("<div class='output-line'>" + line + "</div>");
                     }
                 }
             } else {
-                out.print("No suggestion received.");
+                out.print("<div class='output-line'>No diagnosis received.</div>");
             }
         %>
     </div>
@@ -509,7 +521,7 @@
 
     <!-- ✅ Disclaimer (shown always + printed) -->
     <div class="disclaimer">
-        <strong>⚠️ Disclaimer:</strong> This is an AI-generated suggestion and should not replace professional medical advice. Please consult a certified expert for clinical evaluation.
+        <strong>⚠️ Disclaimer:</strong> This is an AI-generated diagnosis and should not replace professional medical advice. Please consult a doctor for clinical evaluation.
     </div>
 </div>
 
@@ -572,4 +584,3 @@ document.head.appendChild(style);
 </script>
 
 </body>
-</html>
