@@ -19,21 +19,23 @@
     <servlet>
     <servlet-name>LifestyleFormServlet</servlet-name>
     <servlet-class>LifestyleFormServlet</servlet-class>
-</servlet>
 
-<servlet-mapping>
+    </servlet>
+
+    <servlet-mapping>
     <servlet-name>LifestyleFormServlet</servlet-name>
     <url-pattern>/LifestyleFormServlet</url-pattern>
-</servlet-mapping>
-
-<servlet>
+    </servlet-mapping>
+    
+    <servlet>
     <servlet-name>SymptomDiagnosticFormServlet</servlet-name>
     <servlet-class>SymptomDiagnosticFormServlet</servlet-class>
-</servlet>
+    </servlet>
 
-<servlet-mapping>
+    <servlet-mapping>
     <servlet-name>SymptomDiagnosticFormServlet</servlet-name>
     <url-pattern>/SymptomDiagnosticFormServlet</url-pattern>
-</servlet-mapping>
+    </servlet-mapping>
+
 
 </web-app>
