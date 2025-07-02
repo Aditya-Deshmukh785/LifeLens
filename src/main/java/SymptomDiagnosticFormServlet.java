@@ -135,4 +135,6 @@ public class SymptomDiagnosticFormServlet extends HttpServlet {
         request.getRequestDispatcher("SuggestedDiagnosticChanges.jsp")
                .forward(request, response);
     }
+
 }
+
