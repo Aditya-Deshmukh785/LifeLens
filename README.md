@@ -1,6 +1,6 @@
 # 🩺 LifeLens – AI-Powered Lifestyle & Health Insight Web App
 
-👉 **Live Demo**: https://lifelens-frontend-d.onrender.com
+
 
 LifeLens is a smart web application that uses **AI** to provide **personalized health and lifestyle suggestions**. Through intuitive surveys and smart diagnostics, users can understand potential lifestyle risks or get guidance based on their symptoms — all backed by AI analysis.
 
